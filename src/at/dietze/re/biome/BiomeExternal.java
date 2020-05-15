@@ -1,4 +1,4 @@
-packageat.dietze.re.biome;
+package at.dietze.re.biome;
 
 import at.dietze.re.Main;
 import org.bukkit.Material;
