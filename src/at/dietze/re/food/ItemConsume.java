@@ -21,13 +21,20 @@ public class ItemConsume implements IConsume, Listener {
         }
     }
 
+    public boolean isItem(){
+    
+    if (e.getItem().getType().equals(Material.POTION) && e.getItem().getDurability() == 0) {
+           return true;
+        } 
+     return false;
+    }
 
     @EventHandler
     public void itemConsume(PlayerItemConsumeEvent e) {
         Player p = e.getPlayer();
         heal(p);
-        if (e.getItem().getType().equals(Material.POTION) && e.getItem().getDurability() == 0) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 100, 1));
+        if(isItem()){
+          p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 100, 1));
         }
     }
 }
