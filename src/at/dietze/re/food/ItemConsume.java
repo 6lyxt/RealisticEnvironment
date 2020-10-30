@@ -22,12 +22,11 @@ public class ItemConsume implements IConsume, Listener {
     }
 
     public boolean isItem(){
-    
-     if (e.getItem().getType().equals(Material.POTION) && e.getItem().getDurability() == 0) {
-           return true;
+        if (e.getItem().getType().equals(Material.POTION) && e.getItem().getDurability() == 0) {
+            return true;
         } 
-     return false;
-    }
+            return false;
+        }
    }
 
     @EventHandler
