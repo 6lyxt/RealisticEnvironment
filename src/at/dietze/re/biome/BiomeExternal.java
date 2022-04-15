@@ -47,48 +47,28 @@ public class BiomeExternal implements Listener, IBiome {
     }
 
     void cold(Player p){
-        if(validBiome(p)){
-            if(!(p.getLocation().getBlock().getType() == Material.TORCH)) {
-                if (!(p.getItemInHand().getType() == Material.TORCH)) {
-                    if (p.getLocation().getY() >= 60) {
-                        if (armorNull(p) == 0)
-                            p.damage(0.5);
-                    }
-                }
-            }
+        if(validBiome(p) && !(p.getLocation().getBlock().getType() == Material.TORCH) && !(p.getItemInHand().getType() == Material.TORCH) && (p.getLocation().getY() >= 60 && armorNull(p) == 0){
+               p.damage(0.5);
         }
     }
 
     void night(Player p){
-        if(!day(p) && armorNull(p) < 3){
-            if(!(p.getLocation().getBlock().getType() == Material.TORCH)) {
-                if (!(p.getItemInHand().getType() == Material.TORCH)) {
-                    if (p.getLocation().getY() >= 60)
-                        p.damage(0.25);
-                }
-            }
+        if(!day(p) && armorNull(p) < 3 && !(p.getLocation().getBlock().getType() == Material.TORCH) && !(p.getItemInHand().getType() == Material.TORCH) && p.getLocation().getY() >= 60){
+               p.damage(0.25);
         }
     }
 
     void desert(Player p){
-        if(biome(p).equals(org.bukkit.block.Biome.DESERT)) {
-            if (!(p.getLocation().getBlock().getType() == Material.STATIONARY_WATER || p.getLocation().getBlock().getType() == Material.WATER)) {
-                if (p.getLocation().getY() >= 60) {
-                    if (!p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE)) {
-                        if(day(p)) {
-                            if (armorNull(p) == 1) {
-                                p.damage(0.25);
-                            } else if (armorNull(p) == 2) {
-                                p.damage(0.5);
-                            } else if (armorNull(p) == 3) {
-                                p.damage(0.75);
-                            } else if (armorNull(p) == 4) {
-                                p.damage(1);
-                            }
-                        }
-                    }
-                }
-            }
+        if(biome(p).equals(org.bukkit.block.Biome.DESERT) && !(p.getLocation().getBlock().getType() == Material.STATIONARY_WATER || p.getLocation().getBlock().getType() == Material.WATER) && p.getLocation().getY() >= 60 && !p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE) && day(p)) {
+               if (armorNull(p) == 1) {
+                      p.damage(0.25);
+               } else if (armorNull(p) == 2) {
+                      p.damage(0.5);
+               } else if (armorNull(p) == 3) {
+                      p.damage(0.75);
+               } else if (armorNull(p) == 4) {
+                      p.damage(1);
+             }
         }
     }
 
